@@ -22,6 +22,19 @@ namespace Basic_Game_Template1
         //TODO create your global game variables here
         int heroX, heroY, heroSize, heroSpeed;
         SolidBrush heroBrush = new SolidBrush(Color.Black);
+        int wallX = 500;
+        int tWallY = 00;
+        int bWallY = 1;
+        int wallWidth = 50;
+        int wallHeight = 200;
+        int wallSpeed = 1;
+        Pen drawPen = new Pen(Color.Red);
+        SolidBrush drawBrush = new SolidBrush(Color.Black);
+        SolidBrush wallBrush = new SolidBrush(Color.Black);
+
+        int startTimer = 0;
+        List<Rectangle> wallRecList = new List<Rectangle>();
+
 
         public GameScreen()
         {
@@ -37,6 +50,12 @@ namespace Basic_Game_Template1
             heroY = 100;
             heroSize = 20;
             heroSpeed = 5;
+
+            Rectangle R = new Rectangle(wallX, tWallY, wallWidth, wallHeight);
+            wallRecList.Add(R);
+
+            Rectangle R1 = new Rectangle(wallX, bWallY, wallWidth, wallHeight);
+            wallRecList.Add(R1);
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -105,12 +124,6 @@ namespace Basic_Game_Template1
         /// </summary>
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-
-            Graphics g = this.CreateGraphics();
-
-            g.DrawRectangle( )
-
-
             if (downArrowDown == true)
             {
                 heroY = heroY + heroSpeed;
@@ -119,6 +132,17 @@ namespace Basic_Game_Template1
             {
                 heroY = heroY - heroSpeed;
             }
+            startTimer++;
+
+            for (int i = 0; i < wallRecList.Count; i++)
+            {
+                if (wallRecList[i].X > 0)
+                {
+                    Rectangle r = new Rectangle(wallRecList[i].X - wallSpeed, wallRecList[i].Y, wallRecList[i].Width, wallRecList[i].Height);
+                    wallRecList[i] = r;
+                }
+            }
+           
 
             //TODO collisions checks 
 
@@ -130,8 +154,20 @@ namespace Basic_Game_Template1
         //Everything that is to be drawn on the screen should be done here
         private void GameScreen_Paint(object sender, PaintEventArgs e)
         {
+            if (startTimer > 50)
+            {
+                e.Graphics.FillRectangle(heroBrush, heroX, heroY, heroSize, heroSize);
+
+                for (int i = 0; i < wallRecList.Count; i++)
+                {
+                    e.Graphics.FillRectangle(wallBrush, wallRecList[i].X, wallRecList[i].Y, wallRecList[i].Width, wallRecList[i].Height);
+                }
+
+            }
+
             //draw rectangle to screen
-            e.Graphics.FillRectangle(heroBrush, heroX, heroY, heroSize, heroSize);
+            
+            
         }
     }
 
