@@ -25,5 +25,10 @@ namespace Basic_Game_Template1
                 MainForm.ChangeScreen(this, "MenuScreen");
             }
         }
+
+        private void winButton_Click(object sender, EventArgs e)
+        {
+            MainForm.ChangeScreen(this, "MenuScreen");
+        }
     }
 }

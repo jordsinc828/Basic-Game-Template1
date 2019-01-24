@@ -113,11 +113,38 @@ namespace Basic_Game_Template1
             Rectangle R19 = new Rectangle(2450, bWallY, wallWidth, wallHeight);
             wallRecList.Add(R19);
             
-            Rectangle R20 = new Rectangle(2550, tWallY, wallWidth, wallHeight);
+            Rectangle R20 = new Rectangle(2550, bWallY, wallWidth, wallHeight);
             wallRecList.Add(R20);
 
+            Rectangle R21 = new Rectangle(2650, tWallY, wallWidth, wallHeight);
+            wallRecList.Add(R21);
 
+            Rectangle R22 = new Rectangle(2680, tWallY, wallWidth, wallHeight);
+            wallRecList.Add(R22);
 
+            Rectangle R23 = new Rectangle(2800, bWallY, wallWidth, wallHeight);
+            wallRecList.Add(R23);
+
+            Rectangle R24 = new Rectangle(2900, tWallY, wallWidth, wallHeight);
+            wallRecList.Add(R24);
+
+            Rectangle R25 = new Rectangle(3000, bWallY, wallWidth, wallHeight);
+            wallRecList.Add(R25);
+
+            Rectangle R26 = new Rectangle(3100, tWallY, wallWidth, wallHeight);
+            wallRecList.Add(R26);
+
+            Rectangle R27 = new Rectangle(3200, bWallY, wallWidth, wallHeight);
+            wallRecList.Add(R27);
+
+            Rectangle R28 = new Rectangle(3300, tWallY, wallWidth, wallHeight);
+            wallRecList.Add(R28);
+
+            Rectangle R29 = new Rectangle(3400, bWallY, wallWidth, wallHeight);
+            wallRecList.Add(R29);
+
+            Rectangle R30 = new Rectangle(3500, tWallY, wallWidth, wallHeight);
+            wallRecList.Add(R30);
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -208,7 +235,7 @@ namespace Basic_Game_Template1
                         wallRecList.RemoveAt(i);
                         score++;
                         scoreText.Text = "Score:" + score;
-                        if (score == 21)
+                        if (score == 31)
                         {
                             Thread.Sleep(1500);
                             MainForm.ChangeScreen(this, "ScoreScreen");
